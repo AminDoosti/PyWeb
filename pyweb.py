@@ -1,22 +1,38 @@
 import os
 
+def tabber(html) -> str:
+  lines = html.split("\n")
+  level = 0
+  output = ""
+  for line in lines:
+    if line.startswith("</"):
+      level -= 1
+      output += "\t" * level + line + "\n"
+      if level < 0:
+        level = 0
+    elif line.startswith("<") and not line.startswith("<!"):
+      output += "\t" * level + line + "\n"
+      level += 1
+    else:
+      output += "\t" * level + line + "\n"
+  return output
+
 class Page:
   def __init__(self) -> None:
-    self.elements = list()
-
-  def add(self, *elements) -> None:
-    for element in elements:
-      self.elements.append(element)
+    self.head = Element("head")
+    self.body = Element("body")
 
   def __repr__(self) -> str:
-    return "\n".join([str(elem) for elem in self.elements])
+    start = "<!DOCTYPE html>\n<html>"
+    end = "</html>"
+    return f"{start}\n{self.head}\n{self.body}\n{end}"
   
-  def export(self, name, ext="html"):
+  def export(self, name, ext="html") -> None:
     if not os.path.exists("output"):
       os.mkdir("output")
     
     with open(f"output/{name}.{ext}", "w") as f:
-      f.write(str(self))
+      f.write(tabber(str(self)))
 
 
 class Element:

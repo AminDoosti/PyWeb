@@ -1,4 +1,4 @@
 output
-*.md
+brainstorm.md
 _*.py
 __pycache__
