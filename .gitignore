@@ -2,3 +2,6 @@ output
 brainstorm.md
 _*.py
 __pycache__
+*.png
+*.jpg
+*.jpeg
