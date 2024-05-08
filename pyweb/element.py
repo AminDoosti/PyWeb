@@ -12,6 +12,7 @@ class Element:
     Returns:
       None
     """
+    self.inline = False
     self.props = attrs
     self.tag = tag
     self.children = children if children != None else []
@@ -56,7 +57,12 @@ class Element:
     Returns:
       String -- combined string representations of all children
     """
-    return "\n" + "\n".join([str(child) for child in self.children]) + "\n"
+    out = None
+    if self.inline:
+      out = "".join([str(child) for child in self.children])
+    else:
+      out = "\n" + "\n".join([str(child) for child in self.children]) + "\n"
+    return out
   
   def __repr__(self) -> str:
     """
