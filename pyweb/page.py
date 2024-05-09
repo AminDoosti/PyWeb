@@ -1,5 +1,4 @@
 from os import path, mkdir
-from .utils import tabber
 from .element import Element
 
 class Page:
@@ -41,11 +40,13 @@ class Page:
       mkdir("output")
     
     with open(f"output/{name}.{ext}", "w") as f:
-      f.write(tabber(str(self)))
+      f.write(str(self))
 
   def set_title(self, title: str) -> None:
     """
     Required arguments:
       (1) title -- string representing the title of the document
     """
-    self.head.add(Element("title", [title]))
+    title_element = Element("title", [title])
+    title_element.inline = True
+    self.head.add(title_element)

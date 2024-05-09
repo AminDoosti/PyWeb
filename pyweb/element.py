@@ -57,7 +57,16 @@ class Element:
     if self.inline:
       out = "".join([str(child) for child in self.children])
     else:
-      out = "\n" + "\n".join([str(child) for child in self.children]) + "\n"
+      # the commented out line does the same as the double for loops, just messier.
+      # out = "".join(["\t".join(["\n\t" + tab_child for tab_child in str(child).split("\n")]) for child in self.children]) + "\n"
+      out = ""
+      for child in self.children:
+        inner_out = ""
+        for inner_child in str(child).split("\n"):
+          inner_out += "\n\t" + inner_child
+        out += "\t" + inner_out
+      out += "\n"
+      
     return out
   
   def __repr__(self) -> str:
