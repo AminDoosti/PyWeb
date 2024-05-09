@@ -10,8 +10,6 @@ class Page:
     """
     Optional arguments:
       (1) from_page -- Page object instance
-    Returns:
-      None
     """
     self.head = from_page.head if from_page else Element("head")
     self.body = from_page.body if from_page else Element("body")
@@ -38,8 +36,6 @@ class Page:
         (1) name -- name of the file being exported
       Optional arguments:
         (1) ext -- extension of the file, defaults to HTML
-      Returns:
-        None
     """
     if not path.exists("output"):
       mkdir("output")
@@ -47,6 +43,9 @@ class Page:
     with open(f"output/{name}.{ext}", "w") as f:
       f.write(tabber(str(self)))
 
-  def set_title(self, title):
+  def set_title(self, title: str) -> None:
+    """
+    Required arguments:
+      (1) title -- string representing the title of the document
+    """
     self.head.add(Element("title", [title]))
-    

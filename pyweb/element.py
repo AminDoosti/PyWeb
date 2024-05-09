@@ -9,9 +9,9 @@ class Element:
     Optional arguments:
       (1) children  -- list of Elements to be initialized to this element's children list
       (2) attrs     -- dictionary of properties of the element to initialize with
-    Returns:
-      None
     """
+    self._id = None
+    self._classes = set()
     self.inline = False
     self.props = attrs
     self.tag = tag
@@ -21,8 +21,6 @@ class Element:
     """
     Required arguments:
       (1) attrs -- dictionary of attributes
-    Returns:
-      None
     """
     self.props = attrs
 
@@ -30,8 +28,6 @@ class Element:
     """
     Required arguments:
       (1) style -- dictionary of CSS rules
-    Returns:
-      None
     """
     self.props["style"] = "; ".join([f'{key}: {val}' for key, val in style.items()])
 
@@ -39,8 +35,6 @@ class Element:
     """
     Optional arguments:
       (1) elements -- list of elements to add as children
-    Returns:
-      None
     """
     for element in elements:
       self.children.append(element)
@@ -50,7 +44,9 @@ class Element:
     Returns:
       String -- HTML-formatted attributes
     """
-    return " ".join([f"{attr}=\"{val}\"" for (attr, val) in self.props.items()])
+    id_and_classes_attrs = f'id="{self._id}" class="{" ".join(self._classes)}"'
+    other_attrs = " ".join([f"{attr}=\"{val}\"" for (attr, val) in self.props.items()])
+    return id_and_classes_attrs + " " + other_attrs
   
   def __get_children_string(self) -> str:
     """
@@ -69,8 +65,23 @@ class Element:
     Returns:
       String -- complete HTML representation of this element
     """
+
     attributes_string = self.__get_attribute_string()
     children_string = self.__get_children_string()
     closing = "/>" if len(self.children) == 0 else f">{children_string}</{self.tag}>"
     spacer = " " if len(attributes_string) != 0 else ""
     return f"<{self.tag}{spacer}{attributes_string}{closing}"
+  
+  def set_id(self, id: str) -> None:
+    """
+    Required arguments:
+      (1) id -- string representing the id of element
+    """
+    self._id = id
+
+  def set_classes(self, classes: list | set) -> None:
+    """
+    Required arguments:
+      (1) classes -- list of classes in string form to assign to element
+    """
+    self._classes = set(classes)

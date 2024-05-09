@@ -17,8 +17,6 @@ class Link(Element):
       (2) text -- placeholder text inside the href element
     Optional arguments:
       (1) attrs -- dictionary of all other attributes
-    Returns:
-      None
     """
     self.url = url
     super().__init__("a", [text], {"href": url} | attrs)
@@ -55,8 +53,6 @@ class Article(Element):
     """
     Optional arguments:
       (1) children -- initializes children on creation
-    Returns:
-      None
     """
     super().__init__("article", children, {})
 
@@ -69,8 +65,6 @@ class Aside(Element):
     """
     Optional arguments:
       (1) children -- initializes children on creation
-    Returns:
-      None
     """
     super().__init__("aside", children, {})
 
@@ -83,8 +77,6 @@ class Bold(Element):
     """
     Required arguments:
       (1) text -- text that needs to be bolded
-    Returns:
-      None
     """
     super().__init__("b", [text], {})
     self.inline = True
@@ -98,8 +90,6 @@ class BDI(Element):
     """
     Required arguments:
       (1) text -- text that requires bi-directional isolation
-    Returns:
-      None
     """
     super().__init__("bdi", [text], {})
     self.inline = True
@@ -115,8 +105,6 @@ class BDO(Element):
       (1) text -- text that needs to be directionally overwritten
     Optional arguments:
       (1) dir -- direction of the text, either "rtl" or "ltr"
-    Returns:
-      None
     """
     super().__init__("bdo", [text], {"dir": direction})
 
@@ -131,8 +119,6 @@ class BlockQuote(Element):
       (1) quote -- text that is being quoted
     Optional arguments:
       (1) source -- source of the quotation
-    Returns:
-      None
     """
     super().__init__("blockquote", [quote], {} if not source else {"cite": source})
 
@@ -143,8 +129,6 @@ class LineBreak(Element):
   """
   def __init__(self) -> None:
     """
-    Returns:
-      None
     """
     super().__init__("br", [], {})
 
@@ -159,8 +143,6 @@ class Button(Element):
       (1) text -- written text on the button
     Optional arguments:
       (1) tyoe -- type of button
-    Returns:
-      None
     """
     super().__init__("button", [text], {"type": type})
     self.inline = True
@@ -172,8 +154,6 @@ class Canvas(Element):
   """
   def __init__(self) -> None:
     """
-    Returns:
-      None
     """
     support_warning = "Your browser does not support the HTML canvas element."
     super().__init__("canvas", [support_warning], {})
@@ -187,8 +167,6 @@ class Cite(Element):
     """
     Required arguments:
       (1) text -- citation text
-    Returns:
-      None
     """
     super().__init__("cite", [text], {})
     self.inline = True
@@ -202,8 +180,6 @@ class Code(Element):
     """
     Required arguments:
       (1) code -- text that needs code representation 
-    Returns:
-      None
     """
     super().__init__("code", [code], {})
     self.inline = True
@@ -218,8 +194,6 @@ class Data(Element):
     Required arguments:
       (1) text -- text within the element
       (2) value -- value of the data element
-    Returns:
-      None
     """
     super().__init__("data", [text], {"value": value})
     self.inline = True
@@ -233,8 +207,6 @@ class Del(Element):
     """
     Required arguments:
       (1) text -- text that is being deleted
-    Returns:
-      None
     """
     super().__init__("del", [text], {})
     self.inline = True
@@ -248,8 +220,6 @@ class DFN(Element):
     """
     Required arguments:
       (1) text -- text that is being defined
-    Returns:
-      None
     """
     super().__init__("dfn", [text], {})
     self.inline = True
@@ -263,8 +233,6 @@ class Div(Element):
     """
     Optional arguments:
       (1) children -- initializes children on creation
-    Returns:
-      None
     """
     super().__init__("div", children, {})
 
@@ -277,8 +245,6 @@ class Emph(Element):
     """
     Required arguments:
       (1) text -- text that needs emphasizing
-    Returns:
-      None
     """
     super().__init__("em", [text], {})
     self.inline = True
@@ -292,8 +258,6 @@ class Footer(Element):
     """
     Optional arguments:
       (1) children -- initializes children on creation
-    Returns:
-      None
     """
     super().__init__("footer", children, {})
 
@@ -306,8 +270,6 @@ class H1(Element):
     """
     Required arguments:
       (1) text -- text within the heading element
-    Returns:
-      None
     """
     super().__init__("h1", [text], {})
     self.inline = True
@@ -321,8 +283,6 @@ class H2(Element):
     """
     Required arguments:
       (1) text -- text within the heading element
-    Returns:
-      None
     """
     super().__init__("h2", [text], {})
     self.inline = True
@@ -336,8 +296,6 @@ class H3(Element):
     """
     Required arguments:
       (1) text -- text within the heading element
-    Returns:
-      None
     """
     super().__init__("h3", [text], {})
     self.inline = True
@@ -351,8 +309,6 @@ class H4(Element):
     """
     Required arguments:
       (1) text -- text within the heading element
-    Returns:
-      None
     """
     super().__init__("h4", [text], {})
     self.inline = True
@@ -366,8 +322,6 @@ class H5(Element):
     """
     Required arguments:
       (1) text -- text within the heading element
-    Returns:
-      None
     """
     super().__init__("h5", [text], {})
     self.inline = True
@@ -381,8 +335,6 @@ class H6(Element):
     """
     Required arguments:
       (1) text -- text within the heading element
-    Returns:
-      None
     """
     super().__init__("h6", [text], {})
     self.inline = True
@@ -396,8 +348,6 @@ class Header(Element):
     """
     Optional arguments:
       (1) children -- initializes children on creation
-    Returns:
-      None
     """
     super().__init__("header", children, {})
 
@@ -408,8 +358,6 @@ class HR(Element):
   """
   def __init__(self) -> None:
     """
-    Returns:
-      None
     """
     super().__init__("hr", [], {})
     self.inline = True
@@ -423,8 +371,6 @@ class Italic(Element):
     """
     Required arguments:
       (1) text -- text that needs to be italisized
-    Returns:
-      None
     """
     super().__init__("i", [text], {})
     self.inline = True
@@ -443,8 +389,6 @@ class Image(Element):
       (2) width -- width of image
       (3) height -- height of image
       (4) attrs -- dictionary of all other attributes
-    Returns:
-      None
     """
     formatted_src = src
     if not (src.startswith("/") or src.startswith("./") or src.startswith("../")):
@@ -474,8 +418,6 @@ class Ins(Element):
     """
     Required arguments:
       (1) text -- text that needs to be inserted
-    Returns:
-      None
     """
     fixed_attrs = {}
     if cite: fixed_attrs = fixed_attrs | {"cite": cite}
@@ -492,8 +434,6 @@ class Main(Element):
     """
     Optional arguments:
       (1) children -- initializes children on creation
-    Returns:
-      None
     """
     super().__init__("main", children, {})
 
@@ -506,8 +446,6 @@ class Mark(Element):
     """
     Required arguments:
       (1) text -- text that needs to be highlighted
-    Returns:
-      None
     """
     super().__init__("mark", [text], {})
 
@@ -520,8 +458,6 @@ class Nav(Element):
     """
     Optional arguments:
       (1) children -- initializes children on creation
-    Returns:
-      None
     """
     super().__init__("nav", children, {})
 
@@ -534,8 +470,6 @@ class Paragraph(Element):
     """
     Required arguments:
       (1) text -- paragraph text
-    Returns:
-      None
     """
     super().__init__("p", [text], {})
 
@@ -548,8 +482,6 @@ class Quote(Element):
     """
     Required arguments:
       (1) text -- text that needs to be quoted
-    Returns:
-      None
     """
     super().__init__("q", [text], {})
     self.inline = True
@@ -563,8 +495,6 @@ class Section(Element):
     """
     Optional arguments:
       (1) children -- initializes children on creation
-    Returns:
-      None
     """
     super().__init__("section", children, {})
 
@@ -577,8 +507,6 @@ class Text(Element):
     """
     Required arguments:
       (1) text -- initialized text
-    Returns:
-      None
     """
     super().__init__("span", [text], {})
 
@@ -591,8 +519,6 @@ class Strong(Element):
     """
     Required arguments:
       (1) text -- text that needs to be strong
-    Returns:
-      None
     """
     super().__init__("strong", [text], {})
     self.inline = True
@@ -606,8 +532,6 @@ class Subscript(Element):
     """
     Required arguments:
       (1) text -- text that needs to be subscripted
-    Returns:
-      None
     """
     super().__init__("sub", [text], {})
     self.inline = True
@@ -621,8 +545,6 @@ class Superscript(Element):
     """
     Required arguments:
       (1) text -- text that needs to be superscripted
-    Returns:
-      None
     """
     super().__init__("sup", [text], {})
     self.inline = True
@@ -638,8 +560,6 @@ class Time(Element):
       (1) text -- text wrapped in time
     Optional arguments:
       (1) datetime -- date and time associated with the element
-    Returns:
-      None
     """
     super().__init__("time", [text], {} if not datetime else {"datetime": datetime})
     self.inline = True
@@ -653,8 +573,6 @@ class Underline(Element):
     """
     Required arguments:
       (1) text -- text that needs to be underlined
-    Returns:
-      None
     """
     super().__init__("u", [text], {})
     self.inline = True
@@ -665,8 +583,4 @@ class WordBreak(Element):
     Sets up the HTML <wbr> element
   """
   def __init__(self) -> None:
-    """
-    Returns:
-      None
-    """
     super().__init__("wbr", [], {})
