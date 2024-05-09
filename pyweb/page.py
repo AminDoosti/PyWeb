@@ -20,7 +20,7 @@ class Page:
     """
     return (self, self.head, self.body)
 
-  def __repr__(self) -> str:
+  def __str__(self) -> str:
     """
     Returns:
       String -- represents a valid HTML page

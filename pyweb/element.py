@@ -70,7 +70,7 @@ class Element:
 
     return out
   
-  def __repr__(self) -> str:
+  def __str__(self) -> str:
     """
     Returns:
       String -- complete HTML representation of this element
@@ -95,3 +95,4 @@ class Element:
       (1) classes -- list of classes in string form to assign to element
     """
     self._classes = set(classes)
+    

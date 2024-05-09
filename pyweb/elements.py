@@ -584,3 +584,17 @@ class WordBreak(Element):
   """
   def __init__(self) -> None:
     super().__init__("wbr", [], {})
+
+class Style(Element):
+  def __init__(self, children=None) -> None:
+    super().__init__("style", children)
+  
+  def set_style(self, style, tags=[], ids=[], classes=[], other=[]) -> None:
+    if len(tags) == 0 and len(ids) == 0 and len(classes) == 0 and len(other) == 0:
+      return
+    
+    proper_ids = ["#" + _id for _id in ids]
+    proper_classes = ["." + _class for _class in classes]
+    selectors = ", ".join(tags + proper_ids + proper_classes + other)
+    rules = "".join([f'{key}: {value}; ' for key, value in style.items()])
+    self.add(selectors + " { " + rules + "}")
