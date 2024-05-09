@@ -46,3 +46,7 @@ class Page:
     
     with open(f"output/{name}.{ext}", "w") as f:
       f.write(tabber(str(self)))
+
+  def set_title(self, title):
+    self.head.add(Element("title", [title]))
+    
