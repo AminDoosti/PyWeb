@@ -44,9 +44,10 @@ class Element:
     Returns:
       String -- HTML-formatted attributes
     """
-    id_and_classes_attrs = f'id="{self._id}" class="{" ".join(self._classes)}"'
+    id_attr = (f'id="{self._id}"' if self._id else "")
+    classes_attr = f'class="{" ".join(self._classes)}"' if len(self._classes) > 0 else ""
     other_attrs = " ".join([f"{attr}=\"{val}\"" for (attr, val) in self.props.items()])
-    return id_and_classes_attrs + " " + other_attrs
+    return (" ".join([id_attr, classes_attr, other_attrs])).strip()
   
   def __get_children_string(self) -> str:
     """
@@ -66,7 +67,7 @@ class Element:
           inner_out += "\n\t" + inner_child
         out += "\t" + inner_out
       out += "\n"
-      
+
     return out
   
   def __repr__(self) -> str:
